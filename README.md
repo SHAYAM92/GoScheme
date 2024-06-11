@@ -29,12 +29,12 @@ The website aims to provide a centralized platform for citizens to browse, searc
    git clone https://github.com/your-username/govt_scheme_collection.git
    cd govt_scheme_collection
 
-2.**Create and activate a virtual environment:**
+  2.**Create and activate a virtual environment:**
    ```bash
    python -m venv venv
    source venv/bin/activate  
 
-3.**Run the development server:**
+   3.**Run the development server:**
    ```bash
    python manage.py runserver
    
