@@ -22,17 +22,17 @@ The website aims to provide a centralized platform for citizens to browse, searc
 - You can download it from [python.org](https://www.python.org/).
 - pip (Python package installer)
 
-##Create and activate a virtual environment
--python -m venv venv
--source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-
-##Run the development server
--python manage.py runserver
-
-
 ### Installation
 
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/your-username/govt_scheme_collection.git
    cd govt_scheme_collection
+
+2.**Create and activate a virtual environment:**
+-python -m venv venv
+-source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+
+3.**Run the development server**
+-python manage.py runserver
+   
