@@ -30,11 +30,11 @@ The website aims to provide a centralized platform for citizens to browse, searc
    cd govt_scheme_collection
 
 2.**Create and activate a virtual environment:**
-```bash
-python -m venv venv
-source venv/bin/activate  
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  
 
 3.**Run the development server:**
-```bash
-python manage.py runserver
+   ```bash
+   python manage.py runserver
    
