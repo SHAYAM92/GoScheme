@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <style>
+            .form-container 
+            {
+                    border: 1px solid #ddd;
+                    padding: 30px;
+                    width: 1200px;
+                    margin: auto;
+                    background-color: #FAF4F0;
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                    border-radius: 10px;
+                    margin-top: 40px;
+            }
+            body {
+                    font-family: 'Roboto', sans-serif;
+                    margin: 0;
+                    padding: 20px;
+                    background: linear-gradient(to right, #FFEFBA, #FFFFFF);
+                    color: #333;
+    }
+    
+        </style>
+        
+    </head>
+
+
+<div class="form-container">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td class="table-cell">
+                        <label class="label" for="scheme-name">SCHEME NAME:</label>
+                        <input type="text" class="input-field" id="scheme-name" name="scheme-name">
+                    </td>
+                    <td class="table-cell">
+                        <label class="label" for="age">AGE:</label>
+                        <input type="number" class="input-field" id="age" name="age">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="table-cell">
+                        <label class="label" for="gender">GENDER:</label>
+                        <select id="gender" name="gender" class="input-field">
+                            <option value="">--SELECT--</option>
+                            <option value="BOTH">BOTH</option>
+                            <option value="FEMALE">FEMALE</option>
+                            <option value="MALE">MALE</option> 
+                        </select>
+                    </td>
+                    <td class="table-cell">
+                        <label class="label" for="education">EDUCATION:</label>
+                        <select id="education" name="education" class="input-field">
+                            <option value="">--SELECT--</option>                            
+                            <option value="SSLC">SSLC</option>
+                            <option value="HSC">HSC</option>
+                            <option value="DIPLOMA">DIPLOMA</option>
+                            <option value="PROFESSIONAL">PROFESSIONAL COURSE</option>
+                            <option value="PH.D">PH.D</option>
+                            <option value="ARTS">ARTS</option>
+                            <option value="P.G">POST_GRADATE</option>
+                            
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            
+            <br><br>
+            <div class="center-align"> 
+                <button type="submit" class="search-button">SEARCH</button>
+            </div>
+        </form>
+    </div>
+    </html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<head>
+  
+  <title>Archived_Schemes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     
+
+{% load static %}
+<link rel="stylesheet"  href="{%  static 'css/styles.css' %}">
+<style>
+    .fa {
+        position: absolute;
+        top:20px;
+        left: 1120px; 
+        font-size: 18px;
+    }
+</style>
+</head>
+<body>
+  {% include 'myapp/header.html ' %}
+  {% include 'myapp/forms.html ' %}
+  <div class="result-container">
+        
+    {% if schemes %}
+        <center><h2>Archived:</h2></center>
+        {% for scheme in schemes %}
+            <div class="scheme-container">
+                <center><h3>{{ scheme.name }}</h3></center>
+                <i class="fa">&#xf06e;{{ scheme.views }}</i>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><strong>Mini Qualification:</strong></td>
+                            <td>{{ scheme.edu_eligibility }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Gender:</strong></td>
+                            <td>{{ scheme.gender }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Age Eligibility:</strong></td>
+                            <td>
+                                {% for caste in casteMapping %}
+                                    {% if caste.scheme.id == scheme.id %}
+                                        {{ caste.caste }} (Min Age: {{ caste.min_age }}, Max Age: {{ caste.max_age }})<br>
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a class="view-more" href="{% url 'scheme_details' scheme.id %}">View more</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <center><h3>No results found.</h3></center>
+    {% endif %}
+</div>
+
+</body>
+</html>

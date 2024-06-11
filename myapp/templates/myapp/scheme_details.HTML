@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ scheme.name }} Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        .s_container {
+            position: relative; 
+            max-width: 800px;
+            width: 100%;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .left {
+            position: absolute; 
+            top: 20px; 
+            left: -45px; 
+            z-index: 1; 
+        }
+        h1 {
+            color: #4CAF50;
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+            margin-top: 0px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f9f9f9;
+            color: #555;
+            font-weight: bold;
+        }
+        a {
+            color: #4CAF50;
+        }
+        .official-link {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            padding: 10px 15px;            
+            color: #4CAF50;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    {% include 'myapp/header.html' %}
+    <div class="s_container">
+        <a href="{% url 'home' %}"><img class="left" src="{% static 'css/left.png' %}" alt="Up Image"></a>
+        <h1>{{ scheme.name }}</h1>
+        <table>
+            
+                <tr>
+                    <th>Description</th>
+                    <td>{{ scheme.description }}</td>
+                </tr>
+                <tr>
+                    <th>Gender</th>
+                    <td>{{ scheme.get_gender_display }}</td>
+                </tr>
+                               
+                <tr>
+                    <th>Education Qualification</th>
+                    <td>{{ scheme.edu_eligibility }}</td>
+                </tr>
+                <tr>
+                    <th>Age Eligibility</th>
+                    <td>
+                        {% for caste in casteMapping %}
+                            {% if caste.scheme.id == scheme.id %}
+                                {{ caste.caste }} (Min Age: {{ caste.min_age }}, Max Age: {{ caste.max_age }})<br>
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Application Starting Date</th>
+                    <td>{{ scheme.start_date }}</td>
+                </tr>
+                <tr>
+                    <th>Application End Date</th>
+                    <td>{{ scheme.end_date }}</td>
+                </tr>
+                <tr>
+                    <th>Official Link To Apply</th>
+                    <td><a href="{{ scheme.link }}" target="_blank" class="official-link">{{ scheme.link }}</a></td>
+                </tr>
+                <tr>
+                    <th>Procedure to Apply</th>
+                    <td>{{ scheme.procedure_to_apply }}</td>
+                </tr>
+           
+        </table>
+        <a class="back-link" href="{{ scheme.link }}" target="_blank">Apply</a>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let upLink = document.querySelector('.left');
+            if (upLink) {
+                    upLink.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    window.history.back();
+                });
+            }
+        });
+    </script>
+    
+</body>
+</html>
